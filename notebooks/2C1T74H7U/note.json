@@ -1,0 +1,253 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# Notes\n* You can adjust the displayed domain, range and grouping through the settings button on a query result.\n* You can do auto complete with Ctrl + . I find it does work well with __pyspark__.",
+      "dateUpdated": "Oct 27, 2016 8:01:48 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1477598360095_-430512053",
+      "id": "20161027-195920_218239356",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch1\u003eNotes\u003c/h1\u003e\n\u003cul\u003e\n\u003cli\u003eYou can adjust the displayed domain, range and grouping through the settings button on a query result.\u003c/li\u003e\n\u003cli\u003eYou can do auto complete with Ctrl + . I find it does work well with \u003cstrong\u003epyspark\u003c/strong\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n"
+      },
+      "dateCreated": "Oct 27, 2016 7:59:20 PM",
+      "dateStarted": "Oct 27, 2016 8:01:48 PM",
+      "dateFinished": "Oct 27, 2016 8:01:50 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nimport numpy as np\nimport pandas as pd\nfrom pyspark.sql.types import *\nfrom pyspark.sql import functions \n\nhomes \u003d pd.read_csv(\u0027/usr/zeppelin/notebook/home_data.csv\u0027)\nhomes.head()",
+      "dateUpdated": "Oct 27, 2016 5:37:43 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1477588462489_506629072",
+      "id": "20161027-171422_1270909359",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "           id             date   price  bedrooms  bathrooms  sqft_living  \\\n0  7129300520  20141013T000000  221900         3       1.00         1180   \n1  6414100192  20141209T000000  538000         3       2.25         2570   \n2  5631500400  20150225T000000  180000         2       1.00          770   \n3  2487200875  20141209T000000  604000         4       3.00         1960   \n4  1954400510  20150218T000000  510000         3       2.00         1680   \n\n   sqft_lot  floors  waterfront  view     ...      grade  sqft_above  \\\n0      5650     1.0           0     0     ...          7        1180   \n1      7242     2.0           0     0     ...          7        2170   \n2     10000     1.0           0     0     ...          6         770   \n3      5000     1.0           0     0     ...          7        1050   \n4      8080     1.0           0     0     ...          8        1680   \n\n   sqft_basement  yr_built  yr_renovated  zipcode      lat     long  \\\n0              0      1955             0    98178  47.5112 -122.257   \n1            400      1951          1991    98125  47.7210 -122.319   \n2              0      1933             0    98028  47.7379 -122.233   \n3            910      1965             0    98136  47.5208 -122.393   \n4              0      1987             0    98074  47.6168 -122.045   \n\n   sqft_living15  sqft_lot15  \n0           1340        5650  \n1           1690        7639  \n2           2720        8062  \n3           1360        5000  \n4           1800        7503  \n\n[5 rows x 21 columns]\n"
+      },
+      "dateCreated": "Oct 27, 2016 5:14:22 PM",
+      "dateStarted": "Oct 27, 2016 5:37:43 PM",
+      "dateFinished": "Oct 27, 2016 5:38:17 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ndf \u003d sqlContext.createDataFrame(homes)\ndf.registerTempTable(\"homes\")\n",
+      "dateUpdated": "Oct 27, 2016 5:39:26 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1477588841685_-56154589",
+      "id": "20161027-172041_1564268750",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Oct 27, 2016 5:20:41 PM",
+      "dateStarted": "Oct 27, 2016 5:39:26 PM",
+      "dateFinished": "Oct 27, 2016 5:39:35 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n\nselect zipcode, round(avg(price),2), count(*) from homes where bedrooms \u003c\u003d ${rooms\u003d2} group by zipcode order by 2 desc limit 15",
+      "dateUpdated": "Oct 27, 2016 7:55:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 300.0,
+          "optionOpen": true,
+          "keys": [
+            {
+              "name": "zipcode",
+              "index": 0.0,
+              "aggr": "sum",
+              "$$hashKey": "object:2019"
+            }
+          ],
+          "values": [
+            {
+              "name": "round(avg(price), 2)",
+              "index": 1.0,
+              "aggr": "sum",
+              "$$hashKey": "object:2022"
+            },
+            {
+              "name": "count(1)",
+              "index": 2.0,
+              "aggr": "sum",
+              "$$hashKey": "object:2023"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "yAxis": {
+              "name": "round(avg(price), 2)",
+              "index": 1.0,
+              "aggr": "sum"
+            },
+            "xAxis": {
+              "name": "zipcode",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          },
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "helium": {}
+      },
+      "settings": {
+        "params": {
+          "rooms": "2"
+        },
+        "forms": {
+          "rooms": {
+            "name": "rooms",
+            "defaultValue": "2",
+            "hidden": false
+          }
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1477589949613_-1251578167",
+      "id": "20161027-173909_204279522",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "zipcode\tround(avg(price), 2)\tcount(1)\n98039\t1550000.0\t1\n98075\t1049016.67\t6\n98008\t896366.67\t6\n98006\t864681.11\t9\n98004\t810607.14\t14\n98005\t780000.0\t1\n98040\t714650.0\t4\n98109\t652859.09\t22\n98119\t615126.22\t41\n98112\t612458.77\t47\n98053\t558601.47\t99\n98102\t558031.25\t24\n98105\t543949.38\t42\n98033\t541510.71\t28\n98199\t539872.07\t68\n"
+      },
+      "dateCreated": "Oct 27, 2016 5:39:09 PM",
+      "dateStarted": "Oct 27, 2016 7:55:23 PM",
+      "dateFinished": "Oct 27, 2016 7:55:26 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\npd.read\n\n",
+      "dateUpdated": "Oct 27, 2016 8:11:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 86.65625,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1477590168178_4347867",
+      "id": "20161027-174248_1982470559",
+      "dateCreated": "Oct 27, 2016 5:42:48 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "intro/python/home_data",
+  "id": "2C1T74H7U",
+  "angularObjects": {
+    "2BZ463PWY:shared_process": [],
+    "2C282UN71:shared_process": [],
+    "2BZVN19J9:shared_process": [],
+    "2BZ4WFBFX:shared_process": [],
+    "2BZJ81AS6:shared_process": [],
+    "2BYCQ9WDV:shared_process": [],
+    "2C1NZNMKR:shared_process": [],
+    "2C33FN1MH:shared_process": [],
+    "2BZTQY6KS:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
