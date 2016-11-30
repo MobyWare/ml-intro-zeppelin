@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "text": "%md\n# Notes\n* You can adjust the displayed domain, range and grouping through the settings button on a query result.\n* You can do auto complete with Ctrl + . I find it does work well with __pyspark__.",
-      "dateUpdated": "Oct 27, 2016 8:01:48 PM",
+      "dateUpdated": "Nov 30, 2016 6:41:58 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -30,19 +30,20 @@
       "jobName": "paragraph_1477598360095_-430512053",
       "id": "20161027-195920_218239356",
       "result": {
-        "code": "SUCCESS",
-        "type": "HTML",
-        "msg": "\u003ch1\u003eNotes\u003c/h1\u003e\n\u003cul\u003e\n\u003cli\u003eYou can adjust the displayed domain, range and grouping through the settings button on a query result.\u003c/li\u003e\n\u003cli\u003eYou can do auto complete with Ctrl + . I find it does work well with \u003cstrong\u003epyspark\u003c/strong\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n"
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "paragraph_1477598360095_-430512053\u0027s Interpreter md not found"
       },
       "dateCreated": "Oct 27, 2016 7:59:20 PM",
       "dateStarted": "Oct 27, 2016 8:01:48 PM",
       "dateFinished": "Oct 27, 2016 8:01:50 PM",
-      "status": "FINISHED",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\nimport numpy as np\nimport pandas as pd\nfrom pyspark.sql.types import *\nfrom pyspark.sql import functions \n\nhomes \u003d pd.read_csv(\u0027/usr/zeppelin/notebook/home_data.csv\u0027)\nhomes.head()",
-      "dateUpdated": "Oct 27, 2016 5:37:43 PM",
+      "dateUpdated": "Nov 30, 2016 6:44:08 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -75,14 +76,14 @@
         "msg": "           id             date   price  bedrooms  bathrooms  sqft_living  \\\n0  7129300520  20141013T000000  221900         3       1.00         1180   \n1  6414100192  20141209T000000  538000         3       2.25         2570   \n2  5631500400  20150225T000000  180000         2       1.00          770   \n3  2487200875  20141209T000000  604000         4       3.00         1960   \n4  1954400510  20150218T000000  510000         3       2.00         1680   \n\n   sqft_lot  floors  waterfront  view     ...      grade  sqft_above  \\\n0      5650     1.0           0     0     ...          7        1180   \n1      7242     2.0           0     0     ...          7        2170   \n2     10000     1.0           0     0     ...          6         770   \n3      5000     1.0           0     0     ...          7        1050   \n4      8080     1.0           0     0     ...          8        1680   \n\n   sqft_basement  yr_built  yr_renovated  zipcode      lat     long  \\\n0              0      1955             0    98178  47.5112 -122.257   \n1            400      1951          1991    98125  47.7210 -122.319   \n2              0      1933             0    98028  47.7379 -122.233   \n3            910      1965             0    98136  47.5208 -122.393   \n4              0      1987             0    98074  47.6168 -122.045   \n\n   sqft_living15  sqft_lot15  \n0           1340        5650  \n1           1690        7639  \n2           2720        8062  \n3           1360        5000  \n4           1800        7503  \n\n[5 rows x 21 columns]\n"
       },
       "dateCreated": "Oct 27, 2016 5:14:22 PM",
-      "dateStarted": "Oct 27, 2016 5:37:43 PM",
-      "dateFinished": "Oct 27, 2016 5:38:17 PM",
+      "dateStarted": "Nov 30, 2016 6:44:08 PM",
+      "dateFinished": "Nov 30, 2016 6:44:41 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\ndf \u003d sqlContext.createDataFrame(homes)\ndf.registerTempTable(\"homes\")\n",
-      "dateUpdated": "Oct 27, 2016 5:39:26 PM",
+      "dateUpdated": "Nov 30, 2016 7:38:01 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -115,8 +116,8 @@
         "msg": ""
       },
       "dateCreated": "Oct 27, 2016 5:20:41 PM",
-      "dateStarted": "Oct 27, 2016 5:39:26 PM",
-      "dateFinished": "Oct 27, 2016 5:39:35 PM",
+      "dateStarted": "Nov 30, 2016 7:38:01 PM",
+      "dateFinished": "Nov 30, 2016 7:38:11 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -201,18 +202,30 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\npd.read\n\n",
-      "dateUpdated": "Oct 27, 2016 8:11:10 PM",
+      "text": "%pyspark\n#TODO format with a mapping function.\nheader \u003d \nfinal_table_text \u003d \"\\n\".join(table_text_list)\noutput \u003d final_table_text.map(lambda x: \"\\t\".join(x))\nprint \"%table\\n%s\" % (output)\n\n",
+      "dateUpdated": "Nov 30, 2016 7:46:37 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
           "mode": "table",
           "height": 86.65625,
           "optionOpen": false,
-          "keys": [],
+          "keys": [
+            {
+              "name": "               id             date    price  bedrooms  bathrooms  sqft_living  \\",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
           "values": [],
           "groups": [],
-          "scatter": {},
+          "scatter": {
+            "xAxis": {
+              "name": "               id             date    price  bedrooms  bathrooms  sqft_living  \\",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          },
           "map": {
             "baseMapType": "Streets",
             "isOnline": true,
@@ -229,24 +242,45 @@
       "apps": [],
       "jobName": "paragraph_1477590168178_4347867",
       "id": "20161027-174248_1982470559",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7269215267441734246.py\", line 265, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/usr/local/lib/python3.4/dist-packages/pandas/core/generic.py\", line 2744, in __getattr__\n    return object.__getattribute__(self, name)\nAttributeError: \u0027DataFrame\u0027 object has no attribute \u0027mkString\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7269215267441734246.py\", line 267, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7269215267441734246.py\", line 265, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/usr/local/lib/python3.4/dist-packages/pandas/core/generic.py\", line 2744, in __getattr__\n    return object.__getattribute__(self, name)\nAttributeError: \u0027DataFrame\u0027 object has no attribute \u0027mkString\u0027\n\n"
+      },
       "dateCreated": "Oct 27, 2016 5:42:48 PM",
+      "dateStarted": "Nov 30, 2016 7:19:24 PM",
+      "dateFinished": "Nov 30, 2016 7:19:24 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "dateUpdated": "Nov 30, 2016 7:23:02 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1480533782600_1997858001",
+      "id": "20161130-192302_890196077",
+      "dateCreated": "Nov 30, 2016 7:23:02 PM",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "intro/python/home_data",
   "id": "2C1T74H7U",
   "angularObjects": {
-    "2BZ463PWY:shared_process": [],
-    "2C282UN71:shared_process": [],
-    "2BZVN19J9:shared_process": [],
-    "2BZ4WFBFX:shared_process": [],
-    "2BZJ81AS6:shared_process": [],
-    "2BYCQ9WDV:shared_process": [],
-    "2C1NZNMKR:shared_process": [],
-    "2C33FN1MH:shared_process": [],
-    "2BZTQY6KS:shared_process": []
+    "2C26FUMES:shared_process": [],
+    "2C59XF4EH:shared_process": [],
+    "2C4UUZMC2:shared_process": [],
+    "2C3MHWBAE:shared_process": [],
+    "2C2QZF2QT:shared_process": [],
+    "2C33EH8CC:shared_process": [],
+    "2C2X2YFFU:shared_process": [],
+    "2C2S5EPWJ:shared_process": [],
+    "2C43UE9A5:shared_process": []
   },
   "config": {},
   "info": {}
