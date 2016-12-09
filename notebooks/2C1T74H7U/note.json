@@ -42,8 +42,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\nimport numpy as np\nimport pandas as pd\nfrom pyspark.sql.types import *\nfrom pyspark.sql import functions \n\nhomes \u003d pd.read_csv(\u0027/usr/zeppelin/notebook/home_data.csv\u0027)\nhomes.head()",
-      "dateUpdated": "Nov 30, 2016 7:59:03 PM",
+      "text": "%pyspark\nimport numpy as np\nimport pandas as pd\nfrom pyspark.sql.types import *\nfrom pyspark.sql import functions \n\ndef GetTabbedTableFrom2D(data):\n    output \u003d None\n    \n    for row in data:\n    \trowOut \u003d None\n    \tfor col in row:\t\t\n    \t\tif rowOut is None:\n    \t\t\trowOut \u003d str(col)\n    \t\telse:\n    \t\t\trowOut \u003d rowOut + \u0027\\t\u0027 + str(col)\n    \tif output is None:\n    \t\toutput \u003d rowOut\n    \telse:\n    \t\toutput \u003d output + \u0027\\n\u0027 + rowOut\n    return output",
+      "user": "anonymous",
+      "dateUpdated": "Dec 9, 2016 6:39:03 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -61,7 +62,7 @@
           }
         },
         "enabled": true,
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -73,11 +74,47 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "           id             date   price  bedrooms  bathrooms  sqft_living  \\\n0  7129300520  20141013T000000  221900         3       1.00         1180   \n1  6414100192  20141209T000000  538000         3       2.25         2570   \n2  5631500400  20150225T000000  180000         2       1.00          770   \n3  2487200875  20141209T000000  604000         4       3.00         1960   \n4  1954400510  20150218T000000  510000         3       2.00         1680   \n\n   sqft_lot  floors  waterfront  view     ...      grade  sqft_above  \\\n0      5650     1.0           0     0     ...          7        1180   \n1      7242     2.0           0     0     ...          7        2170   \n2     10000     1.0           0     0     ...          6         770   \n3      5000     1.0           0     0     ...          7        1050   \n4      8080     1.0           0     0     ...          8        1680   \n\n   sqft_basement  yr_built  yr_renovated  zipcode      lat     long  \\\n0              0      1955             0    98178  47.5112 -122.257   \n1            400      1951          1991    98125  47.7210 -122.319   \n2              0      1933             0    98028  47.7379 -122.233   \n3            910      1965             0    98136  47.5208 -122.393   \n4              0      1987             0    98074  47.6168 -122.045   \n\n   sqft_living15  sqft_lot15  \n0           1340        5650  \n1           1690        7639  \n2           2720        8062  \n3           1360        5000  \n4           1800        7503  \n\n[5 rows x 21 columns]\n"
+        "msg": ""
       },
       "dateCreated": "Oct 27, 2016 5:14:22 PM",
-      "dateStarted": "Nov 30, 2016 7:59:03 PM",
-      "dateFinished": "Nov 30, 2016 7:59:25 PM",
+      "dateStarted": "Dec 9, 2016 6:39:03 PM",
+      "dateFinished": "Dec 9, 2016 6:39:03 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nhomes \u003d pd.read_csv(\u0027/usr/zeppelin/notebook/home_data.csv\u0027)\nhomes.head()",
+      "user": "anonymous",
+      "dateUpdated": "Dec 9, 2016 5:43:17 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1481305356602_552707606",
+      "id": "20161209-174236_577238034",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "           id             date   price  bedrooms  bathrooms  sqft_living  \\\n0  7129300520  20141013T000000  221900         3       1.00         1180   \n1  6414100192  20141209T000000  538000         3       2.25         2570   \n2  5631500400  20150225T000000  180000         2       1.00          770   \n3  2487200875  20141209T000000  604000         4       3.00         1960   \n4  1954400510  20150218T000000  510000         3       2.00         1680   \n\n   sqft_lot  floors  waterfront  view     ...      grade  sqft_above  \\\n0      5650     1.0           0     0     ...          7        1180   \n1      7242     2.0           0     0     ...          7        2170   \n2     10000     1.0           0     0     ...          6         770   \n3      5000     1.0           0     0     ...          7        1050   \n4      8080     1.0           0     0     ...          8        1680   \n\n   sqft_basement  yr_built  yr_renovated  zipcode      lat     long  \\\n0              0      1955             0    98178  47.5112 -122.257   \n1            400      1951          1991    98125  47.7210 -122.319   \n2              0      1933             0    98028  47.7379 -122.233   \n3            910      1965             0    98136  47.5208 -122.393   \n4              0      1987             0    98074  47.6168 -122.045   \n\n   sqft_living15  sqft_lot15  \n0           1340        5650  \n1           1690        7639  \n2           2720        8062  \n3           1360        5000  \n4           1800        7503  \n\n[5 rows x 21 columns]\n"
+      },
+      "dateCreated": "Dec 9, 2016 5:42:36 PM",
+      "dateStarted": "Dec 9, 2016 5:43:17 PM",
+      "dateFinished": "Dec 9, 2016 5:43:17 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -202,8 +239,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n#TODO format with a mapping function.\nheader \u003d \nfinal_table_text \u003d \"\\n\".join(table_text_list)\noutput \u003d final_table_text.map(lambda x: \"\\t\".join(x))\nprint \"%table\\n%s\" % (output)\n\n",
-      "dateUpdated": "Nov 30, 2016 7:46:37 PM",
+      "text": "%pyspark\nprint(\"%table sun\\t100\\nmoon\\t10\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Dec 9, 2016 6:51:27 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -212,7 +250,7 @@
           "optionOpen": false,
           "keys": [
             {
-              "name": "               id             date    price  bedrooms  bathrooms  sqft_living  \\",
+              "name": "nsun\\t100\\nmoon\\t10\"\"\")",
               "index": 0.0,
               "aggr": "sum"
             }
@@ -221,7 +259,7 @@
           "groups": [],
           "scatter": {
             "xAxis": {
-              "name": "               id             date    price  bedrooms  bathrooms  sqft_living  \\",
+              "name": "nsun\\t100\\nmoon\\t10\"\"\")",
               "index": 0.0,
               "aggr": "sum"
             }
@@ -233,7 +271,7 @@
           }
         },
         "enabled": true,
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -243,20 +281,129 @@
       "jobName": "paragraph_1477590168178_4347867",
       "id": "20161027-174248_1982470559",
       "result": {
-        "code": "ERROR",
-        "type": "TEXT",
-        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7269215267441734246.py\", line 265, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/usr/local/lib/python3.4/dist-packages/pandas/core/generic.py\", line 2744, in __getattr__\n    return object.__getattribute__(self, name)\nAttributeError: \u0027DataFrame\u0027 object has no attribute \u0027mkString\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7269215267441734246.py\", line 267, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7269215267441734246.py\", line 265, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/usr/local/lib/python3.4/dist-packages/pandas/core/generic.py\", line 2744, in __getattr__\n    return object.__getattribute__(self, name)\nAttributeError: \u0027DataFrame\u0027 object has no attribute \u0027mkString\u0027\n\n"
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "sun\t100\nmoon\t10\n"
       },
       "dateCreated": "Oct 27, 2016 5:42:48 PM",
-      "dateStarted": "Nov 30, 2016 7:19:24 PM",
-      "dateFinished": "Nov 30, 2016 7:19:24 PM",
-      "status": "ERROR",
+      "dateStarted": "Dec 9, 2016 6:51:27 PM",
+      "dateFinished": "Dec 9, 2016 6:51:27 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pyspark\n",
-      "dateUpdated": "Nov 30, 2016 7:23:02 PM",
-      "config": {},
+      "text": "%pyspark\ncolumnArray \u003d [0,4,5]\nprint(\"%table \" + GetTabbedTableFrom2D([homes.columns[columnArray]]) + GetTabbedTableFrom2D(homes[columnArray][0:2].as_matrix()))",
+      "user": "anonymous",
+      "dateUpdated": "Dec 9, 2016 6:58:32 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "id",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "bathrooms",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "id",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "bathrooms",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1481309569175_1626394525",
+      "id": "20161209-185249_1961848157",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "id\tbathrooms\tsqft_living7129300520.0\t1.0\t1180.0\n6414100192.0\t2.25\t2570.0\n"
+      },
+      "dateCreated": "Dec 9, 2016 6:52:49 PM",
+      "dateStarted": "Dec 9, 2016 6:58:10 PM",
+      "dateFinished": "Dec 9, 2016 6:58:10 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nprint(homes[0:3])\nprint(homes.columns)\nprint(homes[0:3].as_matrix())",
+      "user": "anonymous",
+      "dateUpdated": "Dec 9, 2016 5:54:51 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1481305705535_1889660249",
+      "id": "20161209-174825_2089546549",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "           id             date   price  bedrooms  bathrooms  sqft_living  \\\n0  7129300520  20141013T000000  221900         3       1.00         1180   \n1  6414100192  20141209T000000  538000         3       2.25         2570   \n2  5631500400  20150225T000000  180000         2       1.00          770   \n\n   sqft_lot  floors  waterfront  view     ...      grade  sqft_above  \\\n0      5650     1.0           0     0     ...          7        1180   \n1      7242     2.0           0     0     ...          7        2170   \n2     10000     1.0           0     0     ...          6         770   \n\n   sqft_basement  yr_built  yr_renovated  zipcode      lat     long  \\\n0              0      1955             0    98178  47.5112 -122.257   \n1            400      1951          1991    98125  47.7210 -122.319   \n2              0      1933             0    98028  47.7379 -122.233   \n\n   sqft_living15  sqft_lot15  \n0           1340        5650  \n1           1690        7639  \n2           2720        8062  \n\n[3 rows x 21 columns]\nIndex([\u0027id\u0027, \u0027date\u0027, \u0027price\u0027, \u0027bedrooms\u0027, \u0027bathrooms\u0027, \u0027sqft_living\u0027,\n       \u0027sqft_lot\u0027, \u0027floors\u0027, \u0027waterfront\u0027, \u0027view\u0027, \u0027condition\u0027, \u0027grade\u0027,\n       \u0027sqft_above\u0027, \u0027sqft_basement\u0027, \u0027yr_built\u0027, \u0027yr_renovated\u0027, \u0027zipcode\u0027,\n       \u0027lat\u0027, \u0027long\u0027, \u0027sqft_living15\u0027, \u0027sqft_lot15\u0027],\n      dtype\u003d\u0027object\u0027)\n[[7129300520 \u002720141013T000000\u0027 221900 3 1.0 1180 5650 1.0 0 0 3 7 1180 0\n  1955 0 98178 47.5112 -122.257 1340 5650]\n [6414100192 \u002720141209T000000\u0027 538000 3 2.25 2570 7242 2.0 0 0 3 7 2170 400\n  1951 1991 98125 47.721000000000004 -122.319 1690 7639]\n [5631500400 \u002720150225T000000\u0027 180000 2 1.0 770 10000 1.0 0 0 3 6 770 0\n  1933 0 98028 47.7379 -122.23299999999999 2720 8062]]\n"
+      },
+      "dateCreated": "Dec 9, 2016 5:48:25 PM",
+      "dateStarted": "Dec 9, 2016 5:54:51 PM",
+      "dateFinished": "Dec 9, 2016 5:54:51 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n#TODO format with a mapping function.\nheader \u003d \nfinal_table_text \u003d \"\\n\".join(table_text_list)\noutput \u003d final_table_text.map(lambda x: \"\\t\".join(x))\nprint \"%table\\n%s\" % (output)",
+      "user": "anonymous",
+      "dateUpdated": "Dec 9, 2016 5:58:11 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/text"
+      },
       "settings": {
         "params": {},
         "forms": {}
@@ -264,7 +411,65 @@
       "apps": [],
       "jobName": "paragraph_1480533782600_1997858001",
       "id": "20161130-192302_890196077",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3625347129731426831.py\", line 321, in \u003cmodule\u003e\n    code \u003d compile(\u0027\\n\u0027.join(final_code), \u0027\u003cstdin\u003e\u0027, \u0027exec\u0027, ast.PyCF_ONLY_AST, 1)\n  File \"\u003cstdin\u003e\", line 1\n    header \u003d\n            ^\nSyntaxError: invalid syntax\n"
+      },
       "dateCreated": "Nov 30, 2016 7:23:02 PM",
+      "dateStarted": "Dec 9, 2016 5:58:11 PM",
+      "dateFinished": "Dec 9, 2016 5:58:11 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ndata \u003d np.array([[1,2,3],[4,5,6]])\nprint(data)",
+      "user": "anonymous",
+      "dateUpdated": "Dec 9, 2016 5:58:11 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1481306254420_1158618725",
+      "id": "20161209-175734_1012733963",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "[[1 2 3]\n [4 5 6]]\n"
+      },
+      "dateCreated": "Dec 9, 2016 5:57:34 PM",
+      "dateStarted": "Dec 9, 2016 5:58:11 PM",
+      "dateFinished": "Dec 9, 2016 5:58:11 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "dateUpdated": "Dec 9, 2016 5:58:11 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1481306291315_2036043787",
+      "id": "20161209-175811_591529382",
+      "dateCreated": "Dec 9, 2016 5:58:11 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
@@ -272,15 +477,15 @@
   "name": "intro/python/home_data",
   "id": "2C1T74H7U",
   "angularObjects": {
-    "2C2AVZFGV:shared_process": [],
-    "2C3C8HB3R:shared_process": [],
-    "2C1YDAJEZ:shared_process": [],
-    "2C2UJMD12:shared_process": [],
-    "2C537TGC4:shared_process": [],
-    "2C374C7MM:shared_process": [],
-    "2C4BS8D4Y:shared_process": [],
-    "2C4UV1YNB:shared_process": [],
-    "2C3CABBVV:shared_process": []
+    "2C44FV9UM:shared_process": [],
+    "2C42NQ2PJ:shared_process": [],
+    "2C2YECHU9:shared_process": [],
+    "2C5NK5WNM:shared_process": [],
+    "2C46S687E:shared_process": [],
+    "2C596SFR8:shared_process": [],
+    "2C2P6RN8Y:shared_process": [],
+    "2C4K4CP7Q:shared_process": [],
+    "2C54DH1GK:shared_process": []
   },
   "config": {},
   "info": {}
